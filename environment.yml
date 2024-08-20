@@ -1,0 +1,20 @@
+name: happy-ml
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pandas
+  - scikit-learn
+  - matplotlib
+  - pyarrow
+  - seaborn
+  - tqdm
+  - imbalanced-learn
+  - optuna
+  - xgboost
+  - pip
+  - pip:
+    - optuna
+    - ipywidgets
+    - tabulate
