@@ -18,3 +18,7 @@ dependencies:
     - optuna
     - ipywidgets
     - tabulate
+    - lazypredict-nightly
+    - networkx
+    - shap
+    - lime
