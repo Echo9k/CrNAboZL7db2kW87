@@ -22,3 +22,6 @@ dependencies:
     - networkx
     - shap
     - lime
+    - skops
+    - streamlit
+    - plotly

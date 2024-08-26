@@ -5,19 +5,21 @@ def download_csv_from_google_drive(file_id, destination):
     session = requests.Session()
 
     response = session.get(base_url, params={'id': file_id}, stream=True)
-    token = get_confirm_token(response)
-
-    if token:
+    if token := get_confirm_token(response):
         params = {'id': file_id, 'confirm': token}
         response = session.get(base_url, params=params, stream=True)
 
     save_response_content(response, destination)
 
 def get_confirm_token(response):
-    for key, value in response.cookies.items():
-        if key.startswith('download_warning'):
-            return value
-    return None
+    return next(
+        (
+            value
+            for key, value in response.cookies.items()
+            if key.startswith('download_warning')
+        ),
+        None,
+    )
 
 def save_response_content(response, destination):
     CHUNK_SIZE = 32768
