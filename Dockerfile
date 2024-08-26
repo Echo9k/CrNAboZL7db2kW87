@@ -5,14 +5,14 @@ FROM continuumio/miniconda3
 WORKDIR /usr/src/app
 
 # Copy the environment file and the current directory contents into the container at /usr/src/app
-COPY environment.yaml .
+COPY environment.yml .
 COPY . .
 
 # Create the environment based on the environment.yaml file
 RUN conda env create -f environment.yaml
 
 # Activate the environment
-SHELL ["conda", "run", "-n", "happy_customers_env", "/bin/bash", "-c"]
+SHELL ["conda", "run", "-n", "happy-ml", "/bin/bash", "-c"]
 
 # Install additional dependencies if needed
 RUN conda install -c conda-forge lime
@@ -21,7 +21,7 @@ RUN conda install -c conda-forge lime
 EXPOSE 8501
 
 # Set the entrypoint to activate the environment and run Streamlit
-ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "happy_customers_env", "streamlit", "run"]
+ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "happy-ml", "streamlit", "run"]
 
 # Run the Streamlit app when the container launches
 CMD ["happy_customers.py", "--server.port=8501", "--server.headless=true"]
