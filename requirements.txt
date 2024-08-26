@@ -1,0 +1,25 @@
+# Python version
+python==3.10
+
+# Conda dependencies
+pandas
+scikit-learn
+matplotlib
+pyarrow
+seaborn
+tqdm
+imbalanced-learn
+optuna
+xgboost
+
+# Pip dependencies
+optuna
+ipywidgets
+tabulate
+lazypredict-nightly
+networkx
+shap
+lime
+skops
+streamlit
+plotly
