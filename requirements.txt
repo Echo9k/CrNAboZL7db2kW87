@@ -1,6 +1,3 @@
-# Python version
-python==3.10
-
 # Conda dependencies
 pandas
 scikit-learn
