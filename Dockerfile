@@ -9,13 +9,14 @@ COPY environment.yml .
 COPY . .
 
 # Create the environment based on the environment.yaml file
-RUN conda env create -f environment.yaml
+RUN conda env create -f environment.yml
 
 # Activate the environment
 SHELL ["conda", "run", "-n", "happy-ml", "/bin/bash", "-c"]
 
 # Install additional dependencies if needed
-RUN conda install -c conda-forge lime
+RUN conda install -c conda-forge lime  # Install LIME
+RUN conda install -c conda-forge shap  # Install SHAP
 
 # Make port 8501 available to the world outside this container (default Streamlit port)
 EXPOSE 8501
